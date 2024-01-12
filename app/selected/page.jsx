@@ -65,7 +65,7 @@ function Selected() {
     <div className='flex flex-col items-center'>
       <h1 className='text-2xl font-bold my-4'>Archivos seleccionados:</h1>
       <ul className='flex flex-col items-center md:flex-row md:flex-wrap md:gap-x-10 md:mx-4'>
-        {selectedItems?.map((item, index) => (
+        {selectedItems && selectedItems?.map((item, index) => (
           <li className='bg-pink-600 my-4 p-2 rounded-lg' key={index}>
             <div className='bg-black p-2 m-2 w-fit relative'>
               <button
