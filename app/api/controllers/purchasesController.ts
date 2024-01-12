@@ -1,4 +1,4 @@
-import prisma from '@/libs/Prisma';
+import prisma from '../../../lib/prisma';
 
 export async function getPurchasesByEmail(email:string) {
   return prisma.purchase.findMany({
