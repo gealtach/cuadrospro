@@ -3,8 +3,7 @@ import { getPurchasesByEmail } from "../controllers/purchasesController";
 
 export async function GET(req: any) {
  try {
-    const { searchParams } = new URL(req.url || null);
-    const email = searchParams.get("email");
+    const email = req.query.get("email");
     const purchases = await getPurchasesByEmail(email as string);
     return NextResponse.json(purchases);
  } catch (error) {
