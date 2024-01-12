@@ -1,16 +1,16 @@
 import { NextResponse } from "next/server";
 import { getPurchasesByEmail } from "../controllers/purchasesController";
 
-export const dynamic = 'auto'
-
 export async function GET(req: any) {
-  try {
+ try {
     const { searchParams } = new URL(req.url);
     const email = searchParams.get("email");
     const purchases = await getPurchasesByEmail(email as string);
     return NextResponse.json(purchases);
-  } catch (error) {
+ } catch (error) {
     console.error('Error:', error);
     return NextResponse.error();
-  }
+ }
 }
+
+export const revalidate = 60; // 1 minute, or set it to false to disable ISR
