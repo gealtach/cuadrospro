@@ -2,18 +2,19 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
     try {
-        const cart = await req.json();
-        // const headers = new Headers();
-        // headers.set('Access-Control-Allow-Origin','*');
-        // headers.set('Access-Control-Allow-Methods', 'POST');
-        // headers.set('Access-Control-Allow-Headers', 'Content-Type')
+        const cart = await req.body;
         const preferenceInfo = {
             items:
             [{id: cart.selectedItems[0].url,
             title: cart.email,
             quantity: 1,
             currency_id: 'CLP',
-            unit_price: cart.totalPrice}]
+            unit_price: cart.totalPrice}],
+            back_urls: {
+              success: `${process.env.client}/aproved`,
+              pending: 'http://localhost:3000/pending',
+              failure: `${process.env.client}/failure`
+            }
         }
         
         const response = await fetch('https://api.mercadopago.com/checkout/preferences',{
@@ -28,10 +29,10 @@ export async function POST(req: NextRequest) {
             body: JSON.stringify(preferenceInfo),
         })
         const data = await response.json();
-        console.log(data.init_point);
+
         
-      return Response.redirect(`${data.init_point}`);
-      //return Response.json(data.init_point);
+      //return Response.redirect(`${data.init_point}`);
+      return Response.json(data.init_point);
 
     } catch (error) {
       console.error('Error:', error);
