@@ -1,15 +1,14 @@
 'use client'
 import React, { useEffect } from 'react'
 import { useFileContext } from '../FileContext';
-import webpayLogo from '../img/1348844731.jpg';
 import mercadoPagoLogo from '../img/Mercado_Pago-OGfnlreJZ_brandlogos.net.jpg';
-import { useNavigate } from 'react-router-dom';
-import { servidorBase } from '../App';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 function Payment() {
   const { state } = useFileContext();
   const cart = state.buyCart;
-  const navigate = useNavigate();
+  const navigate = useRouter();
   const handlermp = async () => {
     try {
       if(cart){
@@ -34,7 +33,7 @@ function Payment() {
     }
   }
   useEffect(()=>{
-    if(!cart) navigate('/');
+    if(!cart) navigate.push('/');
     localStorage.setItem('cart', JSON.stringify(cart)); 
   },[cart, navigate]);
   return (
@@ -49,7 +48,7 @@ function Payment() {
           <img src={webpayLogo} alt='webpay' width={250} height={200} />
         </div> */}
         <div className='border p-2 bg-slate-100 rounded-lg cursor-pointer hover:bg-blue-500' onClick={handlermp}>
-          <img src={mercadoPagoLogo} alt='mercadoPago' width={250} height={200} />
+          <Image src={mercadoPagoLogo} alt='mercadoPago' width={250} height={200} />
         </div>
       </div>
     </div>
