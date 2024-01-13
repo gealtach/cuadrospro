@@ -49,17 +49,21 @@ function Selected() {
     return prices[size];
   };
 
-  const selectedItems = selectedFiles?.map((imageUrl, index) => ({
+  if(selectedFiles){
+    const selectedItems = selectedFiles?.map((imageUrl, index) => ({
     url: imageUrl,
     selectedSize: selectedSizes[index] || '10x10',
     price: calculatePrice(selectedSizes[index]) || 10,
   }));
-  const totalPrice = selectedItems
+  }
+  if(selectedItems){
+    const totalPrice = selectedItems
     .map((item, index) => (selectedSizes[index] ? selectedSizes[index] : '10x10'))
     .reduce((total, currentSize) => {
       const sizePrice = currentSize === '10x10' ? 10 : currentSize === '15x15' ? 15 : currentSize === '20x20' ? 20 : currentSize === '20x30' ? 25 : currentSize === '40x40' ? 40 : 0;
       return total + sizePrice;
     }, 0);
+  }
 
   return (
     <div className='flex flex-col items-center'>
