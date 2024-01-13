@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect } from 'react'
 import { useFileContext } from '../FileContext';
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
