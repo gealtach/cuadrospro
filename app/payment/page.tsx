@@ -1,20 +1,18 @@
-'use client'
 import React, { useEffect } from 'react'
 import { useFileContext } from '../FileContext';
-import { useRouter } from 'next/navigation';
-import webpayLogo from '../img/1348844731.svg';
-import mercadoPagoLogo from '../img/Mercado_Pago-OGfnlreJZ_brandlogos.net.svg';
-import Image from 'next/image';
-import { env } from 'process';
+import webpayLogo from '../img/1348844731.jpg';
+import mercadoPagoLogo from '../img/Mercado_Pago-OGfnlreJZ_brandlogos.net.jpg';
+import { useNavigate } from 'react-router-dom';
+import { servidorBase } from '../App';
 
 function Payment() {
   const { state } = useFileContext();
   const cart = state.buyCart;
-  const router = useRouter();
-  
+  const navigate = useNavigate();
   const handlermp = async () => {
     try {
-      const response = await fetch('/api/createpreference', {
+      if(cart){
+        const response = await fetch(`api/createpreference`, {
           method: "POST",
           headers: {
               'Authorization': `Bearer ${process.env.acmp}`,
@@ -26,19 +24,18 @@ function Payment() {
           body: JSON.stringify(cart),
       });
       const data = await response.json();
-      console.log(data,'imResponseinfront');
+      
+        window.location.href = data.init_point;
+      }
+      
     } catch (error) {
         console.error('Error al realizar la solicitud:', error);
     }
   }
   useEffect(()=>{
-    if(!cart) router.push('/');
-  },[]);
-
-    //<div className='border p-2 bg-slate-100 rounded-lg cursor-pointer hover:bg-blue-500'>
-    //  <Image src={webpayLogo} alt='webpay' width={250} height={200} />
-    //</div>
-  
+    if(!cart) navigate('/');
+    localStorage.setItem('cart', JSON.stringify(cart)); 
+  },[cart, navigate]);
   return (
     <div>
       <div className='m-4 p-4 flex gap-x-10'>
@@ -47,8 +44,11 @@ function Payment() {
       </div>
       <div className='flex flex-col items-center gap-y-6'>
         <h1>Métodos de pago</h1>
+        {/* <div className='border p-2 bg-slate-100 rounded-lg cursor-pointer hover:bg-blue-500'>
+          <img src={webpayLogo} alt='webpay' width={250} height={200} />
+        </div> */}
         <div className='border p-2 bg-slate-100 rounded-lg cursor-pointer hover:bg-blue-500' onClick={handlermp}>
-          <Image src={mercadoPagoLogo} alt='mercadoPago' width={250} height={200} />
+          <img src={mercadoPagoLogo} alt='mercadoPago' width={250} height={200} />
         </div>
       </div>
     </div>
