@@ -12,7 +12,7 @@ function Payment() {
   const handlermp = async () => {
     try {
       if(cart){
-        const response = await fetch(`api/createpreference`, {
+        const response = await fetch(`/api/createpreference`, {
           method: "POST",
           headers: {
               'Authorization': `Bearer ${process.env.acmp}`,
