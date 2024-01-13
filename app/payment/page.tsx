@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect } from 'react'
 import { useFileContext } from '../FileContext';
 import webpayLogo from '../img/1348844731.jpg';
