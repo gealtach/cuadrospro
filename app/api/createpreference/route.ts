@@ -12,9 +12,9 @@ export async function POST(req: NextRequest) {
             currency_id: 'CLP',
             unit_price: cart.totalPrice}],
             back_urls: {
-              success: `${process.env.client}/aproved`,
-              pending: 'http://localhost:3000/pending',
-              failure: `${process.env.client}/failure`
+              success: `/aproved`,
+              pending: '/pending',
+              failure: `/failure`
             }
         }
         
