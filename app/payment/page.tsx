@@ -25,7 +25,7 @@ function Payment() {
       });
       const data = await response.json();
       console.log(data)
-        window.location.href = data.init_point;
+        window.location.href = data;
       }
       
     } catch (error) {
