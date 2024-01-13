@@ -2,8 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
     try {
-        const cart = await req.body;
-        const preferenceInfo = {
+        const cart = await req.json();
+        if(cart){
+          const preferenceInfo = {
             items:
             [{id: cart.selectedItems[0].url,
             title: cart.email,
@@ -33,6 +34,7 @@ export async function POST(req: NextRequest) {
         
       //return Response.redirect(`${data.init_point}`);
       return Response.json(data.init_point);
+        }
 
     } catch (error) {
       console.error('Error:', error);

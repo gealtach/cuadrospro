@@ -36,6 +36,7 @@ function Payment() {
     if(!cart) navigate.push('/');
     localStorage.setItem('cart', JSON.stringify(cart)); 
   },[cart, navigate]);
+  
   return (
     <div>
       <div className='m-4 p-4 flex gap-x-10'>
