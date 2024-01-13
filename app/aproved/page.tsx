@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useFileContext } from '../FileContext';
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 
-export const Arpoved = () => {
+const Aproved = () => {
     const { dispatch } = useFileContext();
     const loadCart = () => {
         const cart = localStorage.getItem('cart');
@@ -48,3 +48,5 @@ export const Arpoved = () => {
     </div>
   )
 }
+
+export default Aproved
