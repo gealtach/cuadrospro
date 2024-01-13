@@ -13,15 +13,17 @@ function Selected() {
   const { data: session } = useSession();
   const email = session?.user.email;
   const [adress, setAdress] = useState('');
+  const [selectedItems, setSelectedItems] = useState([]); // Declare selectedItems here
+  let totalPrice = 0; // Initialize totalPrice here
 
   const handleChange = (e) => {
-    setAdress(e.target.value)
-  }
+    setAdress(e.target.value);
+  };
 
   const handleBuy = () => {
-    dispatch({ type: 'BUY_CART', payload: {selectedItems, totalPrice, email, adress}});
+    dispatch({ type: 'BUY_CART', payload: { selectedItems, totalPrice, email, adress } });
     router.push('/payment');
-  }
+  };
 
   const handleRemoveFile = (position) => {
     dispatch({ type: 'REMOVE_FILE', payload: position });
@@ -32,10 +34,18 @@ function Selected() {
   const [selectedSizes, setSelectedSizes] = useState([]);
 
   useEffect(() => {
-    if (selectedFiles) {
-     }
-    else router.push('/');
-
+    if (!selectedFiles) {
+      router.push('/');
+    } else {
+      // Update selectedItems here
+      setSelectedItems(
+        selectedFiles.map((imageUrl, index) => ({
+          url: imageUrl,
+          selectedSize: selectedSizes[index] || '10x10',
+          price: calculatePrice(selectedSizes[index]) || 10,
+        }))
+      );
+    }
   }, [selectedFiles]);
 
   const calculatePrice = (size) => {
@@ -49,20 +59,9 @@ function Selected() {
     return prices[size];
   };
 
-  if(selectedFiles){
-    const selectedItems = selectedFiles?.map((imageUrl, index) => ({
-    url: imageUrl,
-    selectedSize: selectedSizes[index] || '10x10',
-    price: calculatePrice(selectedSizes[index]) || 10,
-  }));
-  }
-  if(selectedItems){
-    const totalPrice = selectedItems
-    .map((item, index) => (selectedSizes[index] ? selectedSizes[index] : '10x10'))
-    .reduce((total, currentSize) => {
-      const sizePrice = currentSize === '10x10' ? 10 : currentSize === '15x15' ? 15 : currentSize === '20x20' ? 20 : currentSize === '20x30' ? 25 : currentSize === '40x40' ? 40 : 0;
-      return total + sizePrice;
-    }, 0);
+  // Calculate totalPrice
+  if (selectedItems) {
+    totalPrice = selectedItems.reduce((total, item) => total + item.price, 0);
   }
 
   return (
