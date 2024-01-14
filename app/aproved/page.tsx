@@ -4,9 +4,15 @@ import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 
 const Aproved = () => {
     const loadCart = () => {
-        const cart = localStorage.getItem('cart');
-        return cart ? JSON.parse(cart) : null;
+        try {
+            const cart = localStorage.getItem('cart');
+            return cart ? JSON.parse(cart) : null;
+        } catch (error) {
+            console.error('Error parsing JSON:', error);
+            return null;
+        }
     }
+    
     // const createPurchase = async (cart:any) => {
     //     console.log(cart);
         
@@ -39,7 +45,7 @@ const Aproved = () => {
       },[])
   return (
     <div className='flex justify-center items-center w-screen h-screen'>
-        <div className='border bg-slate-100'>
+        <div className='border bg-slate-100 p-4 flex flex-col justify-center items-center rounded'>
             <IoCheckmarkDoneCircleOutline className='text-green-600' size={70} />
             <h1 className='text-3xl'>Tu compra se ha realizado con exito!!</h1>
         </div>
