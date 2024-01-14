@@ -1,13 +1,8 @@
 'use client'
 import React, { useEffect } from 'react'
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
-import { useFileContext } from '../FileContext';
 
 const Aproved = () => {
-      
-    const { state } = useFileContext();
-    const cart = state.buyCart;
-    console.log(cart);
     
         
     const createPurchase = async (cart:any) => {
@@ -34,9 +29,12 @@ const Aproved = () => {
     }
 
     useEffect(()=> {
-        if(cart){
-            createPurchase(cart);
-        }
+        const cart = localStorage.getItem('cart')
+        console.log(cart);
+        
+        // if(cart){
+        //     createPurchase(cart);
+        // }
 
       },[])
   return (

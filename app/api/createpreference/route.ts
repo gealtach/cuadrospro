@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
             back_urls: {
               success: `https://cuadrospro.vercel.app/aproved`,
               pending: '/pending',
-              failure: `/failure`
+              failure: `https://cuadrospro.vercel.app/failure`
             }
         }
         
