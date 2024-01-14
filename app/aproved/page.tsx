@@ -9,7 +9,7 @@ const Aproved = () => {
         console.log(cart);
         
         try {
-            const response = await fetch(`/api/purchase`, {
+            const response = await fetch(`/api/postpurchases`, {
                 method: "POST",
                 headers:{
                     'Content-Type': 'application/json',
