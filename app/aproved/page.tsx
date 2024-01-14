@@ -6,12 +6,14 @@ const Aproved = () => {
     const loadCart = () => {
         try {
             const cart = localStorage.getItem('cart');
+            console.log('Cart content:', cart); // Agrega esta línea
             return cart ? JSON.parse(cart) : null;
         } catch (error) {
             console.error('Error parsing JSON:', error);
             return null;
         }
     }
+    
     
     
     const createPurchase = async (cart:any) => {
