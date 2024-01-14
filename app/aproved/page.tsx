@@ -3,20 +3,22 @@ import React, { useEffect } from 'react'
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 
 const Aproved = () => {
-    const loadCart = () => {
-        try {
-            const cart = localStorage.getItem('cart');
-            console.log('Cart content before parsing:', cart); // Agrega esta línea
-            if (cart) {
-                JSON.parse(cart);
-                return cart;
-            }
-            return null;
-        } catch (error) {
-            console.error('Error parsing JSON:', error);
-            return null;
-        }
-    }
+    console.log(localStorage);
+    
+    // const loadCart = () => {
+    //     try {
+    //         const cart = localStorage.getItem('cart');
+    //         console.log('Cart content before parsing:', cart); // Agrega esta línea
+    //         if (cart) {
+    //             JSON.parse(cart);
+    //             return cart;
+    //         }
+    //         return null;
+    //     } catch (error) {
+    //         console.error('Error parsing JSON:', error);
+    //         return null;
+    //     }
+    // }
     
         
     // const createPurchase = async (cart:any) => {
