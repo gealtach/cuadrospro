@@ -30,7 +30,10 @@ const Aproved = () => {
 
     useEffect(()=> {
         const cart = localStorage.getItem('cart')
-        console.log(cart);
+        if(cart){
+            const cartObj = JSON.parse(cart);
+            console.log(cartObj);
+        }
         
         // if(cart){
         //     createPurchase(cart);
