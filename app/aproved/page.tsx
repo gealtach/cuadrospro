@@ -31,14 +31,10 @@ const Aproved = () => {
     useEffect(() => {
         try {
           const cart = localStorage.getItem('cart');
-      
-          if (cart !== null && cart !== undefined) {
-            console.log("Cadena JSON en el almacenamiento local:", cart);
-            const cartObj = JSON.parse(cart);
-            console.log("Objeto analizado:", cartObj);
-          } else {
-            console.log("No hay datos en el almacenamiento local.");
-          }
+            const cart2 = JSON.stringify(cart);
+            console.log(cart2);
+            
+          
         } catch (error) {
           console.error("Error al analizar JSON:", error);
         }
