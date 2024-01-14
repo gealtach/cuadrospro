@@ -26,6 +26,7 @@ function Page() {
 
   return (
     <div className='md:flex md:flex-wrap'>
+      {purchases && purchases.length === 0 && (<><h1>No hay datos para mostrar</h1></>)}
       {purchases &&  purchases.map((purchase: any, index:number) => (
         <div className='bg-slate-100 rounded-lg border m-2 p-2 text-sm cursor-pointer' key={index} onClick={() =>handleClick(purchase.id)}>
           <p>Id Compra: {purchase.id}</p>

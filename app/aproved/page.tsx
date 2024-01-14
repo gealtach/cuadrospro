@@ -7,6 +7,8 @@ const Aproved = () => {
       
     const { state } = useFileContext();
     const cart = state.buyCart;
+    console.log(cart);
+    
         
     const createPurchase = async (cart:any) => {
         console.log(cart);
