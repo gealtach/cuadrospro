@@ -32,14 +32,18 @@ const Aproved = () => {
         try {
           const cart = localStorage.getItem('cart');
       
-          if (cart) {
+          if (cart !== null && cart !== undefined) {
+            console.log("Cadena JSON en el almacenamiento local:", cart);
             const cartObj = JSON.parse(cart);
-            console.log(cartObj);
+            console.log("Objeto analizado:", cartObj);
+          } else {
+            console.log("No hay datos en el almacenamiento local.");
           }
         } catch (error) {
           console.error("Error al analizar JSON:", error);
         }
-      }, []);   
+      }, []);
+      
 
   return (
     <div className='flex justify-center items-center w-screen h-screen'>

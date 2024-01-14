@@ -78,7 +78,9 @@ function Page() {
                 <h1 className='text-sm text-slate-400'>Estoy decorando mis muros</h1>
             </div>
         </div>
-        <div className='flex gap-x-4 my-4 bg-slate-100 p-4 rounded-lg cursor-pointer' onClick={() => router.push('/codemaker')}>
+        <div className='flex gap-x-4 my-4 bg-slate-100 p-4 rounded-lg cursor-not-allowed opacity-45' 
+        // onClick={() => router.push('/codemaker')}
+        >
             <Image src={gift} alt='toGift' width={75} height={75} />
             <div>
                 <h1 className='text-xl font-bold text-pink-600'>Para regalar</h1>
