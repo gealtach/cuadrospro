@@ -12,7 +12,8 @@ function Payment() {
   const handlermp = async () => {
     try {
       if(cart){
-        localStorage.setItem('cart', cart);
+        const cartString = JSON.stringify(cart);
+        localStorage.setItem('cart', cartString);
         const response = await fetch(`/api/createpreference`, {
           method: "POST",
           headers: {

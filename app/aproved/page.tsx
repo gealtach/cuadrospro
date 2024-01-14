@@ -31,10 +31,12 @@ const Aproved = () => {
     useEffect(() => {
         try {
           const cart = localStorage.getItem('cart');
-            const cart2 = JSON.stringify(cart);
-            console.log(cart2);
-            
-          
+      
+          if (cart) {
+            console.log("Cadena JSON en el almacenamiento local:", cart);
+            const cartObj = JSON.parse(cart);
+            console.log("Objeto analizado:", cartObj);
+          }
         } catch (error) {
           console.error("Error al analizar JSON:", error);
         }
