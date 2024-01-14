@@ -28,18 +28,19 @@ const Aproved = () => {
         }
     }
 
-    useEffect(()=> {
-        const cart = localStorage.getItem('cart')
-        if(cart){
+    useEffect(() => {
+        try {
+          const cart = localStorage.getItem('cart');
+      
+          if (cart) {
             const cartObj = JSON.parse(cart);
             console.log(cartObj);
+          }
+        } catch (error) {
+          console.error("Error al analizar JSON:", error);
         }
-        
-        // if(cart){
-        //     createPurchase(cart);
-        // }
+      }, []);   
 
-      },[])
   return (
     <div className='flex justify-center items-center w-screen h-screen'>
         <div className='border bg-slate-100 p-4 flex flex-col gap-y-4 justify-center items-center rounded'>
