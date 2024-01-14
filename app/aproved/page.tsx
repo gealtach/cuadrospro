@@ -33,9 +33,8 @@ const Aproved = () => {
           const cart = localStorage.getItem('cart');
       
           if (cart) {
-            console.log("Cadena JSON en el almacenamiento local:", cart);
             const cartObj = JSON.parse(cart);
-            console.log("Objeto analizado:", cartObj);
+            createPurchase(cartObj);
           }
         } catch (error) {
           console.error("Error al analizar JSON:", error);
