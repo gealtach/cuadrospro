@@ -6,7 +6,9 @@ const Aproved = () => {
     const loadCart = () => {
         try {
             const cart = localStorage.getItem('cart');
-            return cart ? JSON.parse(cart) : null;
+            console.log(cart);
+            
+            return cart;
         } catch (error) {
             console.error('Error parsing JSON:', error);
             return null;
