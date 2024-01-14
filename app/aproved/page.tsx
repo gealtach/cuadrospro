@@ -3,10 +3,10 @@ import React, { useEffect } from 'react'
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 
 const Aproved = () => {
-    // const loadCart = () => {
-    //     const cart = localStorage.getItem('cart');
-    //     return cart ? JSON.parse(cart) : null;
-    // }
+    const loadCart = () => {
+        const cart = localStorage.getItem('cart');
+        return cart ? JSON.parse(cart) : null;
+    }
     // const createPurchase = async (cart:any) => {
     //     console.log(cart);
         
@@ -30,13 +30,13 @@ const Aproved = () => {
     //     }
     // }
 
-    // useEffect(()=> {
-    //     const cart = loadCart();
-    //     if(cart){
-    //         createPurchase(cart);
-    //     }
+    useEffect(()=> {
+        const cart = loadCart();
+        if(cart){
+            //createPurchase(cart);
+        }
 
-    //   },[])
+      },[])
   return (
     <div className='flex justify-center items-center w-screen h-screen'>
         <div className='border bg-slate-100'>
