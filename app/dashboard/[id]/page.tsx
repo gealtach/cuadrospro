@@ -11,6 +11,7 @@ function Page({ params }: any) {
     async function fetchData() {
       const response = await fetch(`/api/${params.id}`);
       const data = await response.json();
+      
       setInfo(data);
     }
     fetchData();
@@ -23,7 +24,7 @@ function Page({ params }: any) {
         {info.map((item: any) => (
           <div className='bg-slate-100 m-2 p-2 border rounded-lg' key={item.id}>
             <p>Created At: {item.createdAt}</p>
-            <Image src={URL.createObjectURL(new Blob([item.url]))} alt='img' width={200} height={200} />
+            <Image src={item.url} alt='img' width={200} height={200} />
             <p>Selected Size: {item.selectedSize}</p>
             <p>Price: {item.price}</p>
             <p>Purchase ID: {item.purchaseId}</p>

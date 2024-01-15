@@ -1,13 +1,12 @@
 'use client'
+import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react'
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 
 const Aproved = () => {
     
-        
-    const createPurchase = async (cart:any) => {
-        console.log(cart);
-        
+    const router = useRouter();        
+    const createPurchase = async (cart:any) => {  
         try {
             const response = await fetch(`/api/postpurchases`, {
                 method: "POST",
@@ -35,6 +34,7 @@ const Aproved = () => {
           if (cart) {
             const cartObj = JSON.parse(cart);
             createPurchase(cartObj);
+            setTimeout(() => router.push('/home'), 3000)
           }
         } catch (error) {
           console.error("Error al analizar JSON:", error);
@@ -47,6 +47,7 @@ const Aproved = () => {
         <div className='border bg-slate-100 p-4 flex flex-col gap-y-4 justify-center items-center rounded'>
             <IoCheckmarkDoneCircleOutline className='text-green-600' size={70} />
             <h1 className='text-3xl'>Tu compra se ha realizado con exito!!</h1>
+            <p>Serás redirigido en 3... 2... 1...</p>
         </div>
     </div>
   )

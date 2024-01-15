@@ -12,9 +12,9 @@ export async function POST(req: NextRequest) {
             currency_id: 'CLP',
             unit_price: cart.totalPrice}],
             back_urls: {
-              success: `https://cuadrospro.vercel.app/aproved`,
+              success: `https://www.cuadrospro.cl/aproved`,
               pending: '/pending',
-              failure: `https://cuadrospro.vercel.app/failure`
+              failure: `https://www.cuadrospro.cl/failure`
             }
         }
         
