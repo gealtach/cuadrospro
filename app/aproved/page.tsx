@@ -34,7 +34,7 @@ const Aproved = () => {
           if (cart) {
             const cartObj = JSON.parse(cart);
             createPurchase(cartObj);
-            setTimeout(() => router.push('/home'), 3000)
+            setTimeout(() => router.push('/'), 3000)
           }
         } catch (error) {
           console.error("Error al analizar JSON:", error);
